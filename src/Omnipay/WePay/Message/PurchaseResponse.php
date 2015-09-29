@@ -23,6 +23,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 
     public function getRedirectUrl()
     {
+
         return isset( $this->data['hosted_checkout']['checkout_uri'] ) ? $this->data['hosted_checkout']['checkout_uri'] : null;
     }
 
