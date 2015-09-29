@@ -16,15 +16,25 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
         return false;
     }
 
+    public function getCode()
+    {
+        return isset($this->data['error_code']) ? $this->data['error_code'] : null;
+    }
+
+    public function getMessage()
+    {
+        return isset($this->data['error_description']) ? $this->data['error_description'] : null;
+    }
+
     public function isRedirect()
     {
-        return true;
+        return isset($this->data['error']) ? false : true;
     }
 
     public function getRedirectUrl()
     {
 
-        return isset( $this->data['hosted_checkout']['checkout_uri'] ) ? $this->data['hosted_checkout']['checkout_uri'] : null;
+        return isset($this->data['hosted_checkout']['checkout_uri']) ? $this->data['hosted_checkout']['checkout_uri'] : null;
     }
 
     public function getRedirectMethod()
