@@ -5,9 +5,9 @@ namespace Omnipay\WePay\Message;
 use Omnipay\Common\Message\AbstractResponse;
 
 /**
- * WePay Complete Purchase Response
+ * WePay Fetch Transaction Response
  */
-class CompletePurchaseResponse extends AbstractResponse
+class FetchTransactionResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
@@ -17,6 +17,12 @@ class CompletePurchaseResponse extends AbstractResponse
     public function getTransactionReference()
     {
         return isset( $this->data['checkout_id'] ) ? $this->data['checkout_id'] : null;
+    }
+
+
+    public function getTransactionId()
+    {
+        return isset( $this->data['reference_id'] ) ? $this->data['reference_id'] : null;
     }
 
     public function getCode()

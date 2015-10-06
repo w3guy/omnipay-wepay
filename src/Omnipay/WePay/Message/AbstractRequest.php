@@ -7,9 +7,14 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected $liveEndpoint = 'https://wepayapi.com/v2/';
     protected $testEndpoint = 'https://stage.wepayapi.com/v2/';
 
+    public function getApiUrl()
+    {
+        return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+    }
+
     public function getEndpoint()
     {
-        return ( $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint ) . 'checkout/create';
+        return $this->getApiUrl() . 'checkout/create';
     }
 
     public function getFeePayer()

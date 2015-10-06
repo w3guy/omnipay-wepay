@@ -50,6 +50,7 @@ class PurchaseRequest extends AbstractRequest
         }
         catch (\Exception $e) {
             $response = $e->getResponse();
+
             return new PurchaseResponse($this, $response->json());
         }
     }

@@ -11,17 +11,28 @@ class CompletePurchaseRequest extends PurchaseRequest
 {
     public function getData()
     {
-        $return_parameter = $this->httpRequest->query->all();
-        
-        if (empty( $return_parameter )) {
+        // GET parameter returned by WePay
+        $data = $this->httpRequest->query->all();
+
+        if (empty( $data )) {
             throw new InvalidResponseException;
         }
 
-        return $this->httpRequest->query->all();
+        return $data;
     }
 
     public function sendData($data)
     {
-        return $this->response = new CompletePurchaseResponse($this, $data);
+        $checkout_id      = $data['checkout_id'];
+        $fetchTransaction = new FetchTransactionRequest($this->httpClient, $this->httpRequest);
+        $fetchTransaction->setAccountId($this->getAccountId());
+        $fetchTransaction->setTestMode($this->getTestMode());
+        $fetchTransaction->setAccessToken($this->getAccessToken());
+        $fetchTransaction->setTransactionReference($checkout_id);
+        $response = $fetchTransaction->send();
+
+        return new CompletePurchaseResponse($this, $response->getData());
     }
+
+
 }
