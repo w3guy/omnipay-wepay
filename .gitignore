@@ -3,5 +3,5 @@
 composer.lock
 composer.phar
 phpunit.xml
-index.php
+test.php
 complete.php
