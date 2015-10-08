@@ -3,15 +3,17 @@
 **WePay driver for the Omnipay PHP payment processing library**
 
 [![Build Status](https://travis-ci.org/Collizo4sky/omnipay-wepay.png?branch=master)](https://travis-ci.org/Collizo4sky/omnipay-wepay)
+[![Coverage Status](https://coveralls.io/repos/Collizo4sky/omnipay-wepay/badge.svg?branch=master&service=github)](https://coveralls.io/github/Collizo4sky/omnipay-wepay?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/561676d2a1933400150005b8/badge.png)](https://www.versioneye.com/user/projects/561676d2a1933400150005b8)
+
 [![Latest Stable Version](https://poser.pugx.org/collizo4sky/omnipay-wepay/version.png)](https://packagist.org/packages/collizo4sky/omnipay-wepay)
 [![Total Downloads](https://poser.pugx.org/collizo4sky/omnipay-wepay/d/total.png)](https://packagist.org/packages/collizo4sky/omnipay-wepay)
+[![License](https://poser.pugx.org/collizo4sky/omnipay-wepay/license)](https://packagist.org/packages/collizo4sky/omnipay-wepay)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements WePay support for Omnipay.
 
 ## Installation
-
-#### Package hasn't been added to Packagist yet.
 
 Omnipay is installed via [Composer](http://getcomposer.org/). To install, simply add it
 to your `composer.json` file:
@@ -19,7 +21,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "Collizo4sky/WePay": "~2.0"
+        "Collizo4sky/WePay": "~1.0"
     }
 }
 ```
