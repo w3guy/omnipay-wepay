@@ -1,6 +1,6 @@
 <?php
-namespace Omnipay\WePay\Message;
 
+namespace Omnipay\WePay\Message;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
@@ -14,7 +14,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->getApiUrl() . 'checkout/create';
+        return $this->getApiUrl().'checkout/create';
     }
 
     public function getFeePayer()
@@ -57,12 +57,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('accessToken', $value);
     }
 
-
     public function getApiHeader()
     {
         return array(
-            'Authorization' => 'Bearer ' . $this->getAccessToken(),
-            'Content-Type'  => 'application/json'
+            'Authorization' => 'Bearer '.$this->getAccessToken(),
+            'Content-Type' => 'application/json',
         );
     }
 }

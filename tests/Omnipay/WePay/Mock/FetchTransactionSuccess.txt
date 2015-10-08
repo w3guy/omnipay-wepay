@@ -1,0 +1,52 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+Accept-Ranges: bytes
+Connection: keep-alive
+Vary: Authorization
+
+{
+  "checkout_id": 1902960209,
+  "account_id": 783276130,
+  "type": "goods",
+  "short_description": "A vacation home rental\nA vacation home rental2",
+  "currency": "USD",
+  "amount": 25.5,
+  "state": "captured",
+  "soft_descriptor": "WPY*Agbonghama Collins",
+  "auto_capture": true,
+  "create_time": 1444147182,
+  "gross": 25.5,
+  "long_description": "A vacation home rental\nA vacation home rental2",
+  "reference_id": "12345",
+  "callback_uri": null,
+  "delivery_type": null,
+  "fee": {
+    "app_fee": 0,
+    "fee_payer": "payee",
+    "processing_fee": 1.03
+  },
+  "chargeback": {
+    "amount_charged_back": 0,
+    "dispute_uri": "https:\/\/stage.wepay.com\/dispute\/payer_create\/22982513\/28f009b4ab5597e5ec88"
+  },
+  "refund": {
+    "amount_refunded": 0,
+    "refund_reason": null
+  },
+  "hosted_checkout": {
+    "checkout_uri": "https:\/\/stage.wepay.com\/api\/checkout\/1902960209\/a22075c2",
+    "redirect_uri": "http:\/\/localhost.dev\/wp-content\/plugins\/omnipaywp\/complete.php",
+    "shipping_fee": 0,
+    "require_shipping": false,
+    "shipping_address": null,
+    "theme_object": null,
+    "mode": "regular"
+  },
+  "payment_method": null,
+  "payer": {
+    "email": "me@mailinator.com",
+    "name": "Agbonghama Collins",
+    "home_address": null
+  }
+}

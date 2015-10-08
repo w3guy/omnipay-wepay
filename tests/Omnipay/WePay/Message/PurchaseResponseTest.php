@@ -1,9 +1,12 @@
 <?php
 namespace Omnipay\WePay\Message;
+
 use Omnipay\Tests\TestCase;
+
 class PurchaseResponseTest extends TestCase
 {
     private $request;
+
     public function setUp()
     {
         parent::setUp();
@@ -25,7 +28,7 @@ class PurchaseResponseTest extends TestCase
     public function testFailure()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseFailure.txt');
-        $response = new PurchaseResponse($this->request, $httpResponse->json());
+        $response     = new PurchaseResponse($this->request, $httpResponse->json());
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertSame(1004, $response->getCode());
@@ -40,14 +43,14 @@ class PurchaseResponseTest extends TestCase
     public function testSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
-        $response = new PurchaseResponse($this->request, $httpResponse->json());
+        $response     = new PurchaseResponse($this->request, $httpResponse->json());
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
         $this->assertNull($response->getCode());
         $this->assertNull($response->getMessage());
         $this->assertSame('GET', $response->getRedirectMethod());
         $this->assertNull($response->getRedirectData());
-        $this->assertSame('https://stage.wepay.com/api/checkout/670902310/88a87911' , $response->getRedirectUrl());
+        $this->assertSame('https://stage.wepay.com/api/checkout/670902310/88a87911', $response->getRedirectUrl());
         $this->assertSame('12345', $response->getTransactionId());
     }
 }

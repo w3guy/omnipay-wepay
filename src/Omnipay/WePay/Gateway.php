@@ -5,8 +5,7 @@ namespace Omnipay\WePay;
 use Omnipay\Common\AbstractGateway;
 
 /**
- * WePay Gateway
- *
+ * WePay Gateway.
  */
 class Gateway extends AbstractGateway
 {
@@ -18,11 +17,11 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return array(
-            'accountId'   => '',
+            'accountId' => '',
             'accessToken' => '',
-            'type'        => 'goods',
-            'testMode'    => false,
-            'feePayer'    => 'payee'
+            'type' => 'goods',
+            'testMode' => false,
+            'feePayer' => 'payee',
         );
     }
 
@@ -75,7 +74,6 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\WePay\Message\CompletePurchaseRequest', $parameters);
     }
-
 
     public function fetchTransaction(array $parameters = array())
     {

@@ -35,7 +35,7 @@ class GatewayTest extends GatewayTestCase
             'amount'        => '25.50',
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
-            'returnUrl'     => 'http://localhost.dev/wp-content/plugins/omnipaywp/complete.php',
+            'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
             'card'          => $formData
         ));
 
@@ -43,7 +43,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('25.50', $request->getAmount());
         $this->assertSame('USD', $request->getCurrency());
         $this->assertSame('A vacation home rental', $request->getDescription());
-        $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/complete.php', $request->getReturnUrl());
+        $this->assertSame('http://localhost.dev/wepay/complete.php', $request->getReturnUrl());
         $this->assertSame('Agbonghama Collins', $request->getCard()->getName());
         $this->assertSame('me@w3guy.com', $request->getCard()->getEmail());
     }
@@ -58,7 +58,7 @@ class GatewayTest extends GatewayTestCase
             'amount'        => '25.50',
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
-            'returnUrl'     => 'http://localhost.dev/wp-content/plugins/omnipaywp/complete.php',
+            'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
             'card'          => $formData
         ));
 
@@ -66,8 +66,15 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('25.50', $request->getAmount());
         $this->assertSame('USD', $request->getCurrency());
         $this->assertSame('A vacation home rental', $request->getDescription());
-        $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/complete.php', $request->getReturnUrl());
+        $this->assertSame('http://localhost.dev/wepay/complete.php', $request->getReturnUrl());
         $this->assertSame('Agbonghama Collins', $request->getCard()->getName());
         $this->assertSame('me@w3guy.com', $request->getCard()->getEmail());
+    }
+
+    public function testFetchTransactionRequest()
+    {
+        $request = $this->gateway->fetchTransaction(array('transactionReference' => '670902310'));
+
+        $this->assertSame('670902310', $request->getTransactionReference());
     }
 }

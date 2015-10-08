@@ -5,7 +5,7 @@ namespace Omnipay\WePay\Message;
 use Omnipay\Common\Exception\InvalidResponseException;
 
 /**
- * WePay Complete Purchase Request
+ * WePay Complete Purchase Request.
  */
 class CompletePurchaseRequest extends PurchaseRequest
 {
@@ -14,8 +14,8 @@ class CompletePurchaseRequest extends PurchaseRequest
         // GET parameter returned by WePay
         $data = $this->httpRequest->query->all();
 
-        if (empty( $data )) {
-            throw new InvalidResponseException;
+        if (empty($data)) {
+            throw new InvalidResponseException();
         }
 
         return $data;
@@ -23,7 +23,7 @@ class CompletePurchaseRequest extends PurchaseRequest
 
     public function sendData($data)
     {
-        $checkout_id      = $data['checkout_id'];
+        $checkout_id = $data['checkout_id'];
         $fetchTransaction = new FetchTransactionRequest($this->httpClient, $this->httpRequest);
         $fetchTransaction->setAccountId($this->getAccountId());
         $fetchTransaction->setTestMode($this->getTestMode());
@@ -33,6 +33,4 @@ class CompletePurchaseRequest extends PurchaseRequest
 
         return new CompletePurchaseResponse($this, $response->getData());
     }
-
-
 }

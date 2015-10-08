@@ -11,10 +11,9 @@ class PurchaseRequestTest extends TestCase
     {
         parent::setUp();
 
-        $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
-
         $mockPlugin = new \Guzzle\Plugin\Mock\MockPlugin();
-        $mockPlugin->addResponse($httpResponse);
+        $mockPlugin->addResponse($this->getMockHttpResponse('PurchaseSuccess.txt'));
+        $mockPlugin->addResponse($this->getMockHttpResponse('PurchaseFailure.txt'));
 
         $httpClient = $this->getHttpClient();
         $httpClient->addSubscriber($mockPlugin);
@@ -48,13 +47,20 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('goods', $data['type']);
         $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/complete.php', $data['hosted_checkout']['redirect_uri']);
         $this->assertSame('Agbonghama Collins', $data['hosted_checkout']['prefill_info']['name']);
-         $this->assertSame('me@w3guy.com', $data['hosted_checkout']['prefill_info']['email']);
+        $this->assertSame('me@w3guy.com', $data['hosted_checkout']['prefill_info']['email']);
     }
 
     public function testSendData()
     {
-        $data     = $this->request->getData();
+        $data = $this->request->getData();
+
+        // Test PurchaseSuccess.txt
         $response = $this->request->sendData($data);
+        $this->assertSame('Omnipay\WePay\Message\PurchaseResponse', get_class($response));
+
+        // Test PurchaseFailure.txt
+        $response = $this->request->sendData($data);
+
         $this->assertSame('Omnipay\WePay\Message\PurchaseResponse', get_class($response));
     }
 
