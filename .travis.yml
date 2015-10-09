@@ -13,3 +13,6 @@ before_script:
 script: vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpunit --coverage-text
 
 after_script: vendor/bin/coveralls -v
+addons:
+    code_climate:
+        repo_token: 56fea2b6dd89f47edf37d02f313e8633016d5c6709b0047b475cf43c3fea40d6

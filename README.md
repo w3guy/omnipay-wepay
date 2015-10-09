@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/Collizo4sky/omnipay-wepay.png?branch=master)](https://travis-ci.org/Collizo4sky/omnipay-wepay)
 [![Coverage Status](https://coveralls.io/repos/Collizo4sky/omnipay-wepay/badge.svg?branch=master&service=github)](https://coveralls.io/github/Collizo4sky/omnipay-wepay?branch=master)
+[![Code Climate](https://codeclimate.com/github/Collizo4sky/omnipay-wepay/badges/gpa.svg)](https://codeclimate.com/github/Collizo4sky/omnipay-wepay)
 [![Dependency Status](https://www.versioneye.com/user/projects/561676d2a1933400150005b8/badge.png)](https://www.versioneye.com/user/projects/561676d2a1933400150005b8)
 
 [![Latest Stable Version](https://poser.pugx.org/collizo4sky/omnipay-wepay/version.png)](https://packagist.org/packages/collizo4sky/omnipay-wepay)
