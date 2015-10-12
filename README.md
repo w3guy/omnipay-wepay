@@ -22,7 +22,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "Collizo4sky/WePay": "~1.0"
+        "collizo4sky/omnipay-wepay": "~1.0"
     }
 }
 ```
