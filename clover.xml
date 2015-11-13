@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1444309571">
-  <project timestamp="1444309571">
+<coverage generated="1447419611">
+  <project timestamp="1447419611">
     <package name="Omnipay\WePay">
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Gateway.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Gateway.php">
         <class name="Gateway" namespace="Omnipay\WePay">
           <metrics methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="31" coveredelements="31"/>
         </class>
@@ -39,12 +39,12 @@
         <line num="78" type="method" name="fetchTransaction" crap="1" count="1"/>
         <line num="80" type="stmt" count="1"/>
         <line num="83" type="stmt" count="1"/>
-        <line num="272" type="stmt" count="3"/>
+        <line num="322" type="stmt" count="3"/>
         <metrics loc="82" ncloc="79" classes="1" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="31" coveredelements="31"/>
       </file>
     </package>
     <package name="Omnipay\WePay\Message">
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/AbstractRequest.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/AbstractRequest.php">
         <class name="AbstractRequest" namespace="Omnipay\WePay\Message">
           <metrics methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="24" coveredelements="24"/>
         </class>
@@ -75,7 +75,7 @@
         <line num="68" type="stmt" count="1"/>
         <metrics loc="67" ncloc="67" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="24" coveredelements="24"/>
       </file>
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/CompletePurchaseRequest.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/CompletePurchaseRequest.php">
         <class name="CompletePurchaseRequest" namespace="Omnipay\WePay\Message">
           <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
         </class>
@@ -96,7 +96,7 @@
         <line num="37" type="stmt" count="1"/>
         <metrics loc="36" ncloc="31" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
       </file>
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/CompletePurchaseResponse.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/CompletePurchaseResponse.php">
         <class name="CompletePurchaseResponse" namespace="Omnipay\WePay\Message">
           <metrics methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="10" coveredelements="10"/>
         </class>
@@ -113,7 +113,7 @@
         <line num="37" type="stmt" count="1"/>
         <metrics loc="36" ncloc="33" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="10" coveredelements="10"/>
       </file>
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/FetchTransactionRequest.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/FetchTransactionRequest.php">
         <class name="FetchTransactionRequest" namespace="Omnipay\WePay\Message">
           <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="17" coveredelements="17"/>
         </class>
@@ -138,7 +138,7 @@
         <line num="859" type="stmt" count="2"/>
         <metrics loc="41" ncloc="38" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="17" coveredelements="17"/>
       </file>
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/FetchTransactionResponse.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/FetchTransactionResponse.php">
         <class name="FetchTransactionResponse" namespace="Omnipay\WePay\Message">
           <metrics methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="10" coveredelements="10"/>
         </class>
@@ -155,7 +155,7 @@
         <line num="37" type="stmt" count="1"/>
         <metrics loc="36" ncloc="33" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="10" coveredelements="10"/>
       </file>
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/PurchaseRequest.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/PurchaseRequest.php">
         <class name="PurchaseRequest" namespace="Omnipay\WePay\Message">
           <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="29" coveredelements="29"/>
         </class>
@@ -192,7 +192,7 @@
         <line num="859" type="stmt" count="1"/>
         <metrics loc="56" ncloc="49" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="29" coveredelements="29"/>
       </file>
-      <file name="C:\xampp\htdocs\blog\wepay\src\Omnipay\WePay/Message/PurchaseResponse.php">
+      <file name="C:\xampp\htdocs\blog\wepay\src/Message/PurchaseResponse.php">
         <class name="PurchaseResponse" namespace="Omnipay\WePay\Message">
           <metrics methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="20" coveredelements="20"/>
         </class>

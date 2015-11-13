@@ -21,8 +21,7 @@ class GatewayTest extends GatewayTestCase
     public function testGateway()
     {
         $this->assertSame('783276130', $this->gateway->getAccountId());
-        $this->assertSame('STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd',
-            $this->gateway->getAccessToken());
+        $this->assertSame('STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd', $this->gateway->getAccessToken());
         $this->assertSame('payee', $this->gateway->getFeePayer());
     }
 

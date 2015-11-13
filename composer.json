@@ -10,10 +10,12 @@
     "pay",
     "payment"
   ],
-  "homepage": "https://github.com/Collizo4sky/omnipay-wepay",
+  "homepage": "https://github.com/collizo4sky/omnipay-wepay",
   "license": "MIT",
   "autoload": {
-    "psr-0": { "Omnipay\\WePay\\" : "src/" }
+    "psr-4": {
+      "Omnipay\\WePay\\": "src/"
+    }
   },
   "require": {
     "omnipay/common": "~2.3"
