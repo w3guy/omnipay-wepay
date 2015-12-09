@@ -68,7 +68,7 @@ $response = $gateway->purchase(
 ```
 
 
-### Off-site Payment Setup with Credit Card ID
+### Off-site Payment Setup without Credit Card ID
 
 ```
 $gateway = Omnipay::create('WePay');
