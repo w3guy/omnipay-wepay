@@ -2,6 +2,8 @@
 
 namespace Omnipay\WePay\Message;
 
+use Guzzle\Http\Exception\BadResponseException;
+
 /**
  * WePay Purchase Request.
  */
@@ -32,7 +34,7 @@ class FetchTransactionRequest extends AbstractRequest
             )->send();
 
             return new FetchTransactionResponse($this, $response->json());
-        } catch (\Exception $e) {
+        } catch (BadResponseException $e) {
             $response = $e->getResponse();
 
             return new FetchTransactionResponse($this, $response->json());
