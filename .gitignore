@@ -2,6 +2,6 @@
 /vendor
 composer.lock
 composer.phar
-phpunit.xml
 test.php
 complete.php
+testCustomCheckout.php

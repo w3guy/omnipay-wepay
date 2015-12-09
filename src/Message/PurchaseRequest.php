@@ -2,6 +2,8 @@
 
 namespace Omnipay\WePay\Message;
 
+use Guzzle\Http\Exception\BadResponseException;
+
 /**
  * WePay Purchase Request.
  */
@@ -14,11 +16,6 @@ class PurchaseRequest extends AbstractRequest
         $data = array();
         $data['account_id'] = $this->getAccountId();
 
-        // unique_id must be used with a preapproval or a tokenized credit card
-        // this is highly encouraged to prevent duplicate transactions on a single order.
-        // see footnote in https://www.wepay.com/developer/reference/checkout#create
-        $data['unique_id'] = $this->getTransactionId();
-
         $data['reference_id'] = $this->getTransactionId();
         $data['amount'] = $this->getAmount();
         $data['type'] = $this->getType();
@@ -29,8 +26,12 @@ class PurchaseRequest extends AbstractRequest
 
         $token = $this->getToken();
         if (isset($token) && !empty($token)) {
-            $data['type'] = 'credit_card';
-            $data['credit_card'] = array(
+            // unique_id must be used with a preapproval or a tokenized credit card
+            // this is highly encouraged to prevent duplicate transactions on a single order.
+            // see footnote in https://www.wepay.com/developer/reference/checkout#create
+            $data['unique_id'] = $this->getTransactionId();
+            $data['payment_method']['type'] = 'credit_card';
+            $data['payment_method']['credit_card'] = array(
                 'id' => $token,
             );
         } else {
@@ -57,8 +58,13 @@ class PurchaseRequest extends AbstractRequest
                 json_encode($data)
             )->send();
 
-            return new PurchaseResponse($this, $response->json());
-        } catch (\Guzzle\Http\Exception\BadResponseException $e) {
+            // if credit card token is included in this transaction parameter, instantiate CustomCheckoutReponse
+            if (isset($data['payment_method']['credit_card'])) {
+                return new CustomCheckoutResponse($this, $response->json());
+            } else {
+                return new PurchaseResponse($this, $response->json());
+            }
+        } catch (BadResponseException $e) {
             $response = $e->getResponse();
 
             return new PurchaseResponse($this, $response->json());

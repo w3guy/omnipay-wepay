@@ -1,0 +1,53 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+Accept-Ranges: bytes
+Connection: keep-alive
+Vary: Authorization
+
+{
+  "checkout_id": 1202252646,
+  "account_id": 783276130,
+  "type": "goods",
+  "short_description": "A vacation home rental",
+  "currency": "USD",
+  "amount": 25.5,
+  "state": "captured",
+  "soft_descriptor": "WPY*Agbonghama Collins",
+  "auto_capture": true,
+  "create_time": 1449660466,
+  "gross": 25.5,
+  "long_description": "A vacation home rental",
+  "reference_id": "12345",
+  "callback_uri": null,
+  "delivery_type": null,
+  "fee": {
+    "app_fee": 0,
+    "fee_payer": "payee",
+    "processing_fee": 1.03
+  },
+  "chargeback": {
+    "amount_charged_back": 0,
+    "dispute_uri": "https:\/\/stage.wepay.com\/dispute\/payer_create\/29033083\/daf061c6ead52df5d189"
+  },
+  "refund": {
+    "amount_refunded": 0,
+    "refund_reason": null
+  },
+  "payment_method": {
+    "type": "credit_card",
+    "credit_card": {
+      "id": 3827187391,
+      "data": {
+        "emv_receipt": null,
+        "signature_url": null
+      }
+    }
+  },
+  "hosted_checkout": null,
+  "payer": {
+    "email": "collizo4sky@gmail.com",
+    "name": "Agbonghama Collins",
+    "home_address": null
+  }
+}

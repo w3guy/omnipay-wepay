@@ -38,8 +38,54 @@ The following gateways are provided by this package:
 
 * WePay
 
+You need to set your accountId and accessToken. Setting testMode to true will use the sandbox environment.
+
+This gateway supports WePay off-site and on-site purchase. The on-site purchase is possible through a credit card ID. You can generate the ID through the [JavaScript SDK](https://www.wepay.com/developer/process_payments/tokenization-custom-checkout):
+
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
+
+### On-site Payment Setup with Credit Card ID
+
+```
+$gateway = Omnipay::create('WePay');
+$gateway->setAccountId('583276666');
+$gateway->setAccessToken('STAGE_ca4cf9c5d209343d18dae0fc47b908f2d17b47654eecb1fc55bc8652946kdirl');
+$gateway->setTestMode(true);
+
+$formData = array('firstName' => 'Foo', 'lastName' => 'Baz', 'email' => 'hello@mailinator.com');
+
+$response = $gateway->purchase(
+    array(
+        'token' => '3843295557',
+        'transactionId' => '12345678',
+        'amount'        => '25.50',
+        'currency'      => 'USD',
+        'description'   => 'A vacation home rental',
+        'returnUrl'     => 'http://localhost.dev/wepay/complete.php'
+    )
+)->send();
+```
+
+
+### Off-site Payment Setup with Credit Card ID
+
+$gateway = Omnipay::create('WePay');
+$gateway->setAccountId('583276666');
+$gateway->setAccessToken('STAGE_ca4cf9c5d209343d18dae0fc47b908f2d17b47654eecb1fc55bc8652946kdirl');
+$gateway->setTestMode(true);
+
+$formData = array('firstName' => 'Foo', 'lastName' => 'Baz', 'email' => 'hello@mailinator.com');
+
+$response = $gateway->purchase(
+    array(
+        'transactionId' => '12345678',
+        'amount'        => '25.50',
+        'currency'      => 'USD',
+        'description'   => 'A vacation home rental',
+        'returnUrl'     => 'http://localhost.dev/wepay/complete.php'
+    )
+)->send();
 
 ## Support
 
