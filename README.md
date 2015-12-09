@@ -70,6 +70,7 @@ $response = $gateway->purchase(
 
 ### Off-site Payment Setup with Credit Card ID
 
+```
 $gateway = Omnipay::create('WePay');
 $gateway->setAccountId('583276666');
 $gateway->setAccessToken('STAGE_ca4cf9c5d209343d18dae0fc47b908f2d17b47654eecb1fc55bc8652946kdirl');
@@ -86,6 +87,7 @@ $response = $gateway->purchase(
         'returnUrl'     => 'http://localhost.dev/wepay/complete.php'
     )
 )->send();
+```
 
 ## Support
 
