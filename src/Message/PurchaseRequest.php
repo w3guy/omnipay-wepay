@@ -15,8 +15,8 @@ class PurchaseRequest extends AbstractRequest
 
         $data = array();
         $data['account_id'] = $this->getAccountId();
-
-        $data['reference_id'] = $this->getTransactionId();
+        // its important that unique and reference ID are strings else it becomes invalid
+        $data['reference_id'] = (string) $this->getTransactionId();
         $data['amount'] = $this->getAmount();
         $data['type'] = $this->getType();
         $data['currency'] = $this->getCurrency();
@@ -29,7 +29,8 @@ class PurchaseRequest extends AbstractRequest
             // unique_id must be used with a preapproval or a tokenized credit card
             // this is highly encouraged to prevent duplicate transactions on a single order.
             // see footnote in https://www.wepay.com/developer/reference/checkout#create
-            $data['unique_id'] = $this->getTransactionId();
+            // its important that unique and reference ID are strings else it becomes invalid
+            $data['unique_id'] = (string) $this->getTransactionId();
             $data['payment_method']['type'] = 'credit_card';
             $data['payment_method']['credit_card'] = array(
                 'id' => $token,

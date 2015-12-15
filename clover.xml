@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1449677624">
-  <project timestamp="1449677624">
+<coverage generated="1450210828">
+  <project timestamp="1450210828">
     <package name="Omnipay\WePay">
       <file name="C:\xampp\htdocs\wepay-omnipay\src/Gateway.php">
         <class name="Gateway" namespace="Omnipay\WePay">
@@ -115,22 +115,24 @@
       </file>
       <file name="C:\xampp\htdocs\wepay-omnipay\src/Message/CustomCheckoutResponse.php">
         <class name="CustomCheckoutResponse" namespace="Omnipay\WePay\Message">
-          <metrics methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
+          <metrics methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="14" coveredelements="14"/>
         </class>
-        <line num="13" type="method" name="isSuccessful" crap="2" count="2"/>
-        <line num="15" type="stmt" count="2"/>
-        <line num="18" type="method" name="getCode" crap="2" count="2"/>
+        <line num="13" type="method" name="getRequest" crap="1" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="18" type="method" name="isSuccessful" crap="2" count="2"/>
         <line num="20" type="stmt" count="2"/>
-        <line num="23" type="method" name="getMessage" crap="2" count="2"/>
+        <line num="23" type="method" name="getCode" crap="2" count="2"/>
         <line num="25" type="stmt" count="2"/>
-        <line num="28" type="method" name="isRedirect" crap="1" count="1"/>
-        <line num="30" type="stmt" count="1"/>
-        <line num="33" type="method" name="getTransactionId" crap="2" count="2"/>
-        <line num="35" type="stmt" count="2"/>
-        <line num="38" type="method" name="getTransactionReference" crap="2" count="2"/>
+        <line num="28" type="method" name="getMessage" crap="2" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="33" type="method" name="isRedirect" crap="1" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="38" type="method" name="getTransactionId" crap="2" count="2"/>
         <line num="40" type="stmt" count="2"/>
-        <line num="43" type="stmt" count="1"/>
-        <metrics loc="42" ncloc="39" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
+        <line num="43" type="method" name="getTransactionReference" crap="2" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="48" type="stmt" count="1"/>
+        <metrics loc="47" ncloc="44" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="14" coveredelements="14"/>
       </file>
       <file name="C:\xampp\htdocs\wepay-omnipay\src/Message/FetchTransactionRequest.php">
         <class name="FetchTransactionRequest" namespace="Omnipay\WePay\Message">
@@ -191,34 +193,33 @@
         <line num="25" type="stmt" count="2"/>
         <line num="27" type="stmt" count="2"/>
         <line num="28" type="stmt" count="2"/>
-        <line num="32" type="stmt" count="2"/>
         <line num="33" type="stmt" count="2"/>
         <line num="34" type="stmt" count="2"/>
         <line num="35" type="stmt" count="2"/>
-        <line num="37" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="2"/>
         <line num="38" type="stmt" count="2"/>
         <line num="39" type="stmt" count="2"/>
-        <line num="41" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="2"/>
         <line num="42" type="stmt" count="2"/>
         <line num="43" type="stmt" count="2"/>
         <line num="44" type="stmt" count="2"/>
-        <line num="46" type="stmt" count="2"/>
-        <line num="49" type="stmt" count="2"/>
-        <line num="52" type="method" name="sendData" crap="3" count="1"/>
-        <line num="55" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="50" type="stmt" count="2"/>
+        <line num="53" type="method" name="sendData" crap="3" count="1"/>
         <line num="56" type="stmt" count="1"/>
         <line num="57" type="stmt" count="1"/>
         <line num="58" type="stmt" count="1"/>
         <line num="59" type="stmt" count="1"/>
-        <line num="62" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
         <line num="63" type="stmt" count="1"/>
-        <line num="65" type="stmt" count="1"/>
-        <line num="67" type="stmt" count="1"/>
+        <line num="64" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="1"/>
         <line num="68" type="stmt" count="1"/>
-        <line num="70" type="stmt" count="1"/>
-        <line num="74" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
         <line num="859" type="stmt" count="1"/>
-        <metrics loc="73" ncloc="62" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="36" elements="38" coveredelements="38"/>
+        <metrics loc="73" ncloc="58" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="36" elements="38" coveredelements="38"/>
       </file>
       <file name="C:\xampp\htdocs\wepay-omnipay\src/Message/PurchaseResponse.php">
         <class name="PurchaseResponse" namespace="Omnipay\WePay\Message">
@@ -248,6 +249,6 @@
         <metrics loc="61" ncloc="58" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="20" coveredelements="20"/>
       </file>
     </package>
-    <metrics files="9" loc="476" ncloc="442" classes="9" methods="56" coveredmethods="56" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="120" elements="176" coveredelements="176"/>
+    <metrics files="9" loc="481" ncloc="443" classes="9" methods="57" coveredmethods="57" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="121" elements="178" coveredelements="178"/>
   </project>
 </coverage>
