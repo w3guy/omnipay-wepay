@@ -62,7 +62,8 @@ $response = $gateway->purchase(
         'amount'        => '25.50',
         'currency'      => 'USD',
         'description'   => 'A vacation home rental',
-        'returnUrl'     => 'http://localhost.dev/wepay/complete.php'
+        'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
+        'card'          => $formData
     )
 )->send();
 ```
@@ -84,7 +85,8 @@ $response = $gateway->purchase(
         'amount'        => '25.50',
         'currency'      => 'USD',
         'description'   => 'A vacation home rental',
-        'returnUrl'     => 'http://localhost.dev/wepay/complete.php'
+        'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
+        'card'          => $formData
     )
 )->send();
 ```
