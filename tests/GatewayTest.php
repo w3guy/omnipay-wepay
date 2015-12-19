@@ -52,7 +52,7 @@ class GatewayTest extends GatewayTestCase
 
         $formData = array('firstName' => 'Agbonghama', 'lastName' => 'Collins', 'email' => 'me@w3guy.com');
 
-        $request = $this->gateway->purchase(array(
+        $request = $this->gateway->completePurchase(array(
             'transactionId' => '12345',
             'amount'        => '25.50',
             'currency'      => 'USD',
