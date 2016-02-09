@@ -37,24 +37,41 @@ class PurchaseRequest extends AbstractRequest
             );
         } else {
             $data['hosted_checkout'] = array();
-            $data['hosted_checkout']['redirect_uri'] = $this->getReturnUrl();
-            $data['hosted_checkout']['mode'] = $this->getMode();
-            $data['hosted_checkout']['fallback_uri'] = $this->getFallbackUri();
-            $data['hosted_checkout']['shipping_fee'] = $this->getShippingFee();
-            $data['hosted_checkout']['require_shipping'] = $this->getRequireShipping();
-            $data['hosted_checkout']['funding_sources'] = $this->getFundingSources();
+
+            $hosted_checkout_args = array(
+                'redirect_uri' => $this->getReturnUrl(),
+                'mode' => $this->getMode(),
+                'fallback_uri' => $this->getFallbackUri(),
+                'shipping_fee' => $this->getShippingFee(),
+                'require_shipping' => $this->getRequireShipping(),
+                'funding_sources' => $this->getFundingSources(),
+            );
+
+            foreach ($hosted_checkout_args as $key => $value) {
+                if (isset($value)) {
+                    $data['hosted_checkout'][$key] = $value;
+                }
+            }
 
             if ($this->getCard()) {
-                $data['hosted_checkout']['prefill_info'] = array(
+                $data['hosted_checkout']['prefill_info'] = array();
+
+                $prefill_info = array(
                     'name' => $this->getCard()->getName(),
                     'email' => $this->getCard()->getEmail(),
-                    'phone_number' => $this->getCard()->getEmail(),
+                    'phone_number' => $this->getCard()->getPhone(),
                     'address' => $this->getCard()->getAddress1(),
                     'city' => $this->getCard()->getCity(),
                     'state' => $this->getCard()->getState(),
                     'region' => $this->getRegion(),
                     'country' => $this->getCard()->getCountry(),
                 );
+
+                foreach ($prefill_info as $key => $value) {
+                    if (isset($value)) {
+                        $data['hosted_checkout']['prefill_info'][$key] = $value;
+                    }
+                }
             }
         }
 

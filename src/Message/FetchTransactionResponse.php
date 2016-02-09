@@ -11,7 +11,7 @@ class FetchTransactionResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return isset($this->data['state']) && 'captured' == $this->data['state'];
+        return isset($this->data['state']) && in_array($this->data['state'], array('authorized', 'reserved', 'captured'));
     }
 
     public function getTransactionReference()

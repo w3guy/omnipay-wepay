@@ -31,6 +31,9 @@ class CompletePurchaseRequest extends PurchaseRequest
         $fetchTransaction->setTransactionReference($checkout_id);
         $response = $fetchTransaction->send();
 
-        return new CompletePurchaseResponse($this, $response->getData());
+        // merged GET parameters with returned FetchTransaction repsonse data
+        $responseData = array_merge($data, $response->getData());
+
+        return new CompletePurchaseResponse($this, $responseData);
     }
 }
