@@ -38,11 +38,22 @@ class PurchaseRequest extends AbstractRequest
         } else {
             $data['hosted_checkout'] = array();
             $data['hosted_checkout']['redirect_uri'] = $this->getReturnUrl();
+            $data['hosted_checkout']['mode'] = $this->getMode();
+            $data['hosted_checkout']['fallback_uri'] = $this->getFallbackUri();
+            $data['hosted_checkout']['shipping_fee'] = $this->getShippingFee();
+            $data['hosted_checkout']['require_shipping'] = $this->getRequireShipping();
+            $data['hosted_checkout']['funding_sources'] = $this->getFundingSources();
 
             if ($this->getCard()) {
                 $data['hosted_checkout']['prefill_info'] = array(
                     'name' => $this->getCard()->getName(),
                     'email' => $this->getCard()->getEmail(),
+                    'phone_number' => $this->getCard()->getEmail(),
+                    'address' => $this->getCard()->getAddress1(),
+                    'city' => $this->getCard()->getCity(),
+                    'state' => $this->getCard()->getState(),
+                    'region' => $this->getRegion(),
+                    'country' => $this->getCard()->getCountry(),
                 );
             }
         }

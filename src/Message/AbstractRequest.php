@@ -57,6 +57,66 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('accessToken', $value);
     }
 
+    public function getRegion()
+    {
+        return $this->getParameter('region');
+    }
+
+    public function setRegion($value)
+    {
+        return $this->setParameter('region', $value);
+    }
+
+    public function getMode()
+    {
+        return $this->getParameter('mode');
+    }
+
+    public function setMode($value)
+    {
+        return $this->setParameter('mode', $value);
+    }
+
+    public function getFallbackUri()
+    {
+        return $this->getParameter('fallbackUri');
+    }
+
+    public function setFallbackUri($value)
+    {
+        return $this->setParameter('fallbackUri', $value);
+    }
+
+    public function getShippingFee()
+    {
+        return $this->getParameter('shippingFee');
+    }
+
+    public function setShippingFee($value)
+    {
+        return $this->setParameter('shippingFee', $value);
+    }
+
+    public function getRequireShipping()
+    {
+        return $this->getParameter('requireShipping');
+    }
+
+    public function setRequireShipping($value)
+    {
+        return $this->setParameter('requireShipping', $value);
+    }
+
+    public function getFundingSources()
+    {
+        return $this->getParameter('fundingSources');
+    }
+
+    public function setFundingSources($value)
+    {
+        return $this->setParameter('fundingSources', $value);
+    }
+
     public function getApiHeader()
     {
         return array(

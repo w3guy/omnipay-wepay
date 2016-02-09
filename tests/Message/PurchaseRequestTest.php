@@ -15,6 +15,9 @@ class PurchaseRequestTest extends TestCase
     {
         parent::setUp();
 
+        $testCard          = $this->getValidCard();
+        $testCard['email'] = 'me@w3guy.com';
+
         $mockPlugin = new \Guzzle\Plugin\Mock\MockPlugin();
         $mockPlugin->addResponse($this->getMockHttpResponse('PurchaseSuccess.txt'));
         $mockPlugin->addResponse($this->getMockHttpResponse('PurchaseFailure.txt'));
@@ -23,7 +26,7 @@ class PurchaseRequestTest extends TestCase
         $httpClient = $this->getHttpClient();
         $httpClient->addSubscriber($mockPlugin);
 
-        $this->request = new PurchaseRequest($httpClient, $this->getHttpRequest());
+        $this->request  = new PurchaseRequest($httpClient, $this->getHttpRequest());
         $this->request2 = new PurchaseRequest($httpClient, $this->getHttpRequest());
 
         $this->request->initialize(array(
@@ -34,22 +37,34 @@ class PurchaseRequestTest extends TestCase
             'feePayer'      => 'payee',
             'accountId'     => '783276130',
             'type'          => 'goods',
-            'card'          => array('firstName' => 'Agbonghama', 'lastName' => 'Collins', 'email' => 'me@w3guy.com'),
+            'mode'            => 'general',
+            'fallbackUri'     => 'http://localhost.dev',
+            'shippingFee'     => '20',
+            'requireShipping' => true,
+            'fundingSources'  => array('credit_card'),
+            'card'            => $testCard,
             'accessToken'   => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd',
-            'returnUrl'     => 'http://localhost.dev/wp-content/plugins/omnipaywp/complete.php',
+            'returnUrl'     => 'http://localhost.dev/wp-content/plugins/omnipaywp/complete.php'
         ));
 
+        $this->request->setRegion('Edo');
+
         $this->request2->initialize(array(
-            'transactionId' => '12345',
-            'amount'        => '25.50',
-            'currency'      => 'USD',
-            'token'         => '3827187391',
-            'description'   => 'A vacation home rental',
-            'feePayer'      => 'payee',
-            'accountId'     => '783276130',
-            'type'          => 'goods',
-            'card'          => array('firstName' => 'Agbonghama', 'lastName' => 'Collins', 'email' => 'me@w3guy.com'),
-            'accessToken'   => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd'
+            'transactionId'   => '12345',
+            'amount'          => '25.50',
+            'currency'        => 'USD',
+            'token'           => '3827187391',
+            'description'     => 'A vacation home rental',
+            'feePayer'        => 'payee',
+            'accountId'       => '783276130',
+            'type'            => 'goods',
+            'mode'            => 'general',
+            'fallbackUri'     => 'http://localhost.dev',
+            'shippingFee'     => '20',
+            'requireShipping' => true,
+            'fundingSources'  => array('credit_card'),
+            'card'            => $testCard,
+            'accessToken'     => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd'
         ));
     }
 
@@ -69,7 +84,7 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('goods', $data['type']);
         $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/complete.php',
             $data['hosted_checkout']['redirect_uri']);
-        $this->assertSame('Agbonghama Collins', $data['hosted_checkout']['prefill_info']['name']);
+        $this->assertSame('Example User', $data['hosted_checkout']['prefill_info']['name']);
         $this->assertSame('me@w3guy.com', $data['hosted_checkout']['prefill_info']['email']);
 
 
@@ -89,7 +104,7 @@ class PurchaseRequestTest extends TestCase
 
     public function testSendData()
     {
-        $data = $this->request->getData();
+        $data  = $this->request->getData();
         $data2 = $this->request2->getData();
 
         // Test PurchaseSuccess.txt
