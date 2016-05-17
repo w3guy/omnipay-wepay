@@ -22,7 +22,7 @@ class PurchaseRequest extends AbstractRequest
         $data['currency'] = $this->getCurrency();
         $data['short_description'] = $this->getDescription();
         $data['long_description'] = $this->getDescription();
-        $data['fee'] = array('fee_payer' => $this->getFeePayer());
+        $data['fee'] = array('fee_payer' => $this->getFeePayer(), 'app_fee' => $this->getApplicationFee());
 
         $token = $this->getToken();
         if (isset($token) && !empty($token)) {
