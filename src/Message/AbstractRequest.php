@@ -97,6 +97,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('fallbackUri', $value);
     }
 
+    public function getCallbackUri()
+    {
+        return $this->getParameter('callbackUri');
+    }
+
+    public function setCallbackUri($value)
+    {
+        return $this->setParameter('callbackUri', $value);
+    }
+
     public function getShippingFee()
     {
         return $this->getParameter('shippingFee');

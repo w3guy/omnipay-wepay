@@ -23,6 +23,9 @@ class PurchaseRequest extends AbstractRequest
         $data['short_description'] = $this->getDescription();
         $data['long_description'] = $this->getDescription();
         $data['fee'] = array('fee_payer' => $this->getFeePayer(), 'app_fee' => $this->getApplicationFee());
+        if ($this->getCallbackUri()) {
+            $data['callback_uri'] = $this->getCallbackUri();
+        }
 
         $token = $this->getToken();
         if (isset($token) && !empty($token)) {
