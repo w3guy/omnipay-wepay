@@ -90,7 +90,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('670902310', $request->getTransactionReference());
         $this->assertSame('Just because', $request->getRefundReason());
         $this->assertSame('25.50', $request->getAmount());
-        $this->assertSame('2.13', $request->getAppFee());
+        $this->assertSame('2.13', $request->getApplicationFee());
     }
 
     public function testVoid()
