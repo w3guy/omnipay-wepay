@@ -27,9 +27,6 @@ class RefundResponseTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame(1004, $response->getCode());
         $this->assertSame('refund_reason parameter is required', $response->getMessage());
-        $this->assertSame('GET', $response->getRedirectMethod());
-        $this->assertNull($response->getRedirectData());
-        $this->assertNull($response->getRedirectUrl());
         $this->assertNull($response->getTransactionReference());
     }
 
@@ -41,8 +38,6 @@ class RefundResponseTest extends TestCase
         $this->assertTrue($response->isRedirect());
         $this->assertNull($response->getCode());
         $this->assertNull($response->getMessage());
-        $this->assertSame('GET', $response->getRedirectMethod());
-        $this->assertNull($response->getRedirectData());
         $this->assertSame(783276130, $response->getTransactionReference());
         $this->assertSame('refunded', $response->getState());
     }
