@@ -22,7 +22,7 @@ class RefundRequestTest extends TestCase
 
         $this->request->initialize(array(
             'transactionReference' => '670902310',
-            'refundReason'         => 'Just because'
+            'refundReason'         => 'Just because',
             'amount'               => '25.50',
             'app_fee'              => '2.13',
         ));
