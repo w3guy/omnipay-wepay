@@ -36,13 +36,13 @@ class GatewayTest extends GatewayTestCase
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
             'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
-            'callbackUrl'   => 'http://localhost.dev/wepay/hook.php',
+            'callbackUri'   => 'http://localhost.dev/wepay/hook.php',
             'card'          => $formData
         ));
 
         $this->assertSame('12345', $request->getTransactionId());
         $this->assertSame('25.50', $request->getAmount());
-        $this->assertSame('2.13', $request->getAppFee());
+        $this->assertSame('2.13', $request->getApplicationFee());
         $this->assertSame('USD', $request->getCurrency());
         $this->assertSame('A vacation home rental', $request->getDescription());
         $this->assertSame('http://localhost.dev/wepay/complete.php', $request->getReturnUrl());
@@ -63,13 +63,13 @@ class GatewayTest extends GatewayTestCase
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
             'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
-            'callbackUrl'   => 'http://localhost.dev/wepay/hook.php',
+            'callbackUri'   => 'http://localhost.dev/wepay/hook.php',
             'card'          => $formData
         ));
 
         $this->assertSame('12345', $request->getTransactionId());
         $this->assertSame('25.50', $request->getAmount());
-        $this->assertSame('2.13', $request->getAppFee());
+        $this->assertSame('2.13', $request->getApplicationFee());
         $this->assertSame('USD', $request->getCurrency());
         $this->assertSame('A vacation home rental', $request->getDescription());
         $this->assertSame('http://localhost.dev/wepay/complete.php', $request->getReturnUrl());
