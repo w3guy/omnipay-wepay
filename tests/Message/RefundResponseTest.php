@@ -22,7 +22,7 @@ class RefundResponseTest extends TestCase
     public function testFailure()
     {
         $httpResponse = $this->getMockHttpResponse('RefundFailure.txt');
-        $response     = new PurchaseResponse($this->request, $httpResponse->json());
+        $response     = new RefundResponse($this->request, $httpResponse->json());
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertSame(1004, $response->getCode());
@@ -36,7 +36,7 @@ class RefundResponseTest extends TestCase
     public function testSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('RefundSuccess.txt');
-        $response     = new PurchaseResponse($this->request, $httpResponse->json());
+        $response     = new RefundResponse($this->request, $httpResponse->json());
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
         $this->assertNull($response->getCode());

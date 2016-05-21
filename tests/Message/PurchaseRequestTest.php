@@ -64,7 +64,8 @@ class PurchaseRequestTest extends TestCase
             'requireShipping' => true,
             'fundingSources'  => array('credit_card'),
             'card'            => $testCard,
-            'accessToken'     => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd'
+            'accessToken'     => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd',
+            'callbackUri'     => 'http://localhost.dev/wp-content/plugins/omnipaywp/hook.php'
         ));
     }
 
@@ -100,6 +101,8 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('payee', $data2['fee']['fee_payer']);
         $this->assertSame('783276130', $data2['account_id']);
         $this->assertSame('goods', $data2['type']);
+        $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/hook.php',
+            $data2['callback_uri']);
     }
 
     public function testSendData()
