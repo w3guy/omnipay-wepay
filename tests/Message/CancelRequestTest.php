@@ -9,7 +9,7 @@ class CancelRequestTest extends TestCase
     private $request;
 
     /** @var object refundReason set */
-    private $request;
+    private $request2;
 
     public function setUp()
     {
