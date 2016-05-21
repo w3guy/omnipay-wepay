@@ -1,0 +1,8 @@
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Transfer-Encoding: chunked
+Accept-Ranges: bytes
+Connection: keep-alive
+Vary: Authorization
+
+{"error":"invalid_request","error_description":"refund_reason parameter is required","error_code":1004}

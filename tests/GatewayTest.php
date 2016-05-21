@@ -32,17 +32,21 @@ class GatewayTest extends GatewayTestCase
         $request = $this->gateway->purchase(array(
             'transactionId' => '12345',
             'amount'        => '25.50',
+            'app_fee'       => '2.13',
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
             'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
+            'callbackUrl'   => 'http://localhost.dev/wepay/hook.php',
             'card'          => $formData
         ));
 
         $this->assertSame('12345', $request->getTransactionId());
         $this->assertSame('25.50', $request->getAmount());
+        $this->assertSame('2.13', $request->getAppFee());
         $this->assertSame('USD', $request->getCurrency());
         $this->assertSame('A vacation home rental', $request->getDescription());
         $this->assertSame('http://localhost.dev/wepay/complete.php', $request->getReturnUrl());
+        $this->assertSame('http://localhost.dev/wepay/hook.php', $request->getCallbackUri());
         $this->assertSame('Agbonghama Collins', $request->getCard()->getName());
         $this->assertSame('me@w3guy.com', $request->getCard()->getEmail());
     }
@@ -55,19 +59,42 @@ class GatewayTest extends GatewayTestCase
         $request = $this->gateway->completePurchase(array(
             'transactionId' => '12345',
             'amount'        => '25.50',
+            'app_fee'       => '2.13',
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
             'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
+            'callbackUrl'   => 'http://localhost.dev/wepay/hook.php',
             'card'          => $formData
         ));
 
         $this->assertSame('12345', $request->getTransactionId());
         $this->assertSame('25.50', $request->getAmount());
+        $this->assertSame('2.13', $request->getAppFee());
         $this->assertSame('USD', $request->getCurrency());
         $this->assertSame('A vacation home rental', $request->getDescription());
         $this->assertSame('http://localhost.dev/wepay/complete.php', $request->getReturnUrl());
+        $this->assertSame('http://localhost.dev/wepay/hook.php', $request->getCallbackUri());
         $this->assertSame('Agbonghama Collins', $request->getCard()->getName());
         $this->assertSame('me@w3guy.com', $request->getCard()->getEmail());
+    }
+
+    public function testRefund()
+    {
+        $request = $this->gateway->refund(array(
+            'transactionReference' => '670902310',
+            'refundReason'         => 'Just because'
+            'amount'               => '25.50',
+            'app_fee'              => '2.13',
+        ));
+
+        $this->gateway->refund(array(
+            'transactionReference' => $request->getTransactionReference();
+        ))
+
+        $this->assertSame('670902310', $request->getTransactionReference());
+        $this->assertSame('Just because', $request->getRefundReason());
+        $this->assertSame('25.50', $request->getAmount());
+        $this->assertSame('2.13', $request->getAppFee());
     }
 
     public function testFetchTransactionRequest()
