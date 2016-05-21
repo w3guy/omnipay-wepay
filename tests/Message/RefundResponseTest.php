@@ -34,8 +34,8 @@ class RefundResponseTest extends TestCase
     {
         $httpResponse = $this->getMockHttpResponse('RefundSuccess.txt');
         $response     = new RefundResponse($this->request, $httpResponse->json());
-        $this->assertFalse($response->isSuccessful());
-        $this->assertTrue($response->isRedirect());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getCode());
         $this->assertNull($response->getMessage());
         $this->assertSame(783276130, $response->getTransactionReference());

@@ -24,7 +24,7 @@ class RefundRequestTest extends TestCase
             'transactionReference' => '670902310',
             'refundReason'         => 'Just because',
             'amount'               => '25.50',
-            'app_fee'              => '2.13',
+            'applicationFee'              => '2.13',
         ));
     }
 
