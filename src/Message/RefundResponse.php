@@ -25,11 +25,6 @@ class RefundResponse extends AbstractResponse
         return isset($this->data['checkout_id']) ? $this->data['checkout_id'] : null;
     }
 
-    public function getTransactionId()
-    {
-        return isset($this->data['reference_id']) ? $this->data['reference_id'] : null;
-    }
-
     public function getCode()
     {
         return isset($this->data['error_code']) ? $this->data['error_code'] : null;
