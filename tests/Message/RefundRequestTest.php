@@ -32,7 +32,7 @@ class RefundRequestTest extends TestCase
     {
         $data = $this->request->getData();
 
-        $this->assertSame('783276130', $data['checkout_id']);
+        $this->assertSame(670902310, $data['checkout_id']);
         $this->assertSame('Just because', $data['refund_reason']);
         $this->assertSame('25.50', $data['amount']);
         $this->assertSame('2.13', $data['app_fee']);

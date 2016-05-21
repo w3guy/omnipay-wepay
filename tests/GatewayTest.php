@@ -32,7 +32,7 @@ class GatewayTest extends GatewayTestCase
         $request = $this->gateway->purchase(array(
             'transactionId' => '12345',
             'amount'        => '25.50',
-            'app_fee'       => '2.13',
+            'applicationFee'=> '2.13',
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
             'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
@@ -59,7 +59,7 @@ class GatewayTest extends GatewayTestCase
         $request = $this->gateway->completePurchase(array(
             'transactionId' => '12345',
             'amount'        => '25.50',
-            'app_fee'       => '2.13',
+            'applicationFee'=> '2.13',
             'currency'      => 'USD',
             'description'   => 'A vacation home rental',
             'returnUrl'     => 'http://localhost.dev/wepay/complete.php',
@@ -84,7 +84,7 @@ class GatewayTest extends GatewayTestCase
             'transactionReference' => '670902310',
             'refundReason'         => 'Just because',
             'amount'               => '25.50',
-            'app_fee'              => '2.13',
+            'applicationFee'       => '2.13',
         ));
 
         $this->assertSame('670902310', $request->getTransactionReference());

@@ -26,7 +26,7 @@ class RefundResponseTest extends TestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertSame(1004, $response->getCode());
-        $this->assertSame('checkout_id parameter is required', $response->getMessage());
+        $this->assertSame('refund_reason parameter is required', $response->getMessage());
         $this->assertSame('GET', $response->getRedirectMethod());
         $this->assertNull($response->getRedirectData());
         $this->assertNull($response->getRedirectUrl());
@@ -43,7 +43,7 @@ class RefundResponseTest extends TestCase
         $this->assertNull($response->getMessage());
         $this->assertSame('GET', $response->getRedirectMethod());
         $this->assertNull($response->getRedirectData());
-        $this->assertSame('670902310', $response->getTransactionReference());
+        $this->assertSame(783276130, $response->getTransactionReference());
         $this->assertSame('refunded', $response->getState());
     }
 }
