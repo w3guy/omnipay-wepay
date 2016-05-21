@@ -16,7 +16,7 @@ class CancelRequest extends AbstractRequest
 
     public function getData()
     {
-        $this->validate('checkoutId', 'refundReason');
+        $this->validate('transactionReference', 'refundReason');
 
         $data = array();
         $data['checkout_id'] = intval($this->getTransactionReference());
