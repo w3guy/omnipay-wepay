@@ -87,15 +87,23 @@ class GatewayTest extends GatewayTestCase
             'app_fee'              => '2.13',
         ));
 
-        $this->gateway->refund(array(
-            'transactionReference' => $request->getTransactionReference();
-        ))
-
         $this->assertSame('670902310', $request->getTransactionReference());
         $this->assertSame('Just because', $request->getRefundReason());
         $this->assertSame('25.50', $request->getAmount());
         $this->assertSame('2.13', $request->getAppFee());
     }
+
+    public function testVoid()
+    {
+        $request = $this->gateway->void(array(
+            'transactionReference' => '670902310',
+            'cancelReason'         => 'Just because',
+        ));
+
+        $this->assertSame('670902310', $request->getTransactionReference());
+        $this->assertSame('Just because', $request->getCancelReason());
+    }
+
 
     public function testFetchTransactionRequest()
     {
