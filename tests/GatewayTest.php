@@ -23,6 +23,27 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('783276130', $this->gateway->getAccountId());
         $this->assertSame('STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd', $this->gateway->getAccessToken());
         $this->assertSame('payee', $this->gateway->getFeePayer());
+
+        $this->gateway->setMode('regular');
+        $this->assertSame('regular', $this->gateway->getMode());
+
+        $this->gateway->setRegion('GA');
+        $this->assertSame('GA', $this->gateway->getRegion());
+
+        $this->gateway->setFallbackUri('http://localhost.dev/wepay/fallback.php');
+        $this->assertSame('http://localhost.dev/wepay/fallback.php', $this->gateway->getFallbackUri());
+
+        $this->gateway->setShippingFee('5.34');
+        $this->assertSame('5.34', $this->gateway->getShippingFee());
+
+        $this->gateway->setRequireShipping(true);
+        $this->assertSame(true, $this->gateway->getRequireShipping());
+
+        $this->gateway->setRequireShipping(false);
+        $this->assertSame(false, $this->gateway->getRequireShipping());
+
+        $this->gateway->setFundingSources(["credit_card"]);
+        $this->assertEqual(["credit_card"], $this->gateway->getFundingSources());
     }
 
     public function testPurchase()
