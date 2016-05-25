@@ -43,7 +43,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame(false, $this->gateway->getRequireShipping());
 
         $this->gateway->setFundingSources(array("credit_card"));
-        $this->assertEqual(array("credit_card"), $this->gateway->getFundingSources());
+        $this->assertEquals(array("credit_card"), $this->gateway->getFundingSources());
     }
 
     public function testPurchase()
