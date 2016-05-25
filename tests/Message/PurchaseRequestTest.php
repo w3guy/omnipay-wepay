@@ -11,6 +11,9 @@ class PurchaseRequestTest extends TestCase
     /** @var object on-site purchase request with credit card token */
     private $request2;
 
+    /** @var object on-site purchase request with payment bank token */
+    private $request3;
+
     public function setUp()
     {
         parent::setUp();
@@ -28,6 +31,7 @@ class PurchaseRequestTest extends TestCase
 
         $this->request  = new PurchaseRequest($httpClient, $this->getHttpRequest());
         $this->request2 = new PurchaseRequest($httpClient, $this->getHttpRequest());
+        $this->request3 = new PurchaseRequest($httpClient, $this->getHttpRequest());
 
         $this->request->initialize(array(
             'transactionId' => '12345',
@@ -67,6 +71,24 @@ class PurchaseRequestTest extends TestCase
             'accessToken'     => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd',
             'callbackUri'     => 'http://localhost.dev/wp-content/plugins/omnipaywp/hook.php'
         ));
+
+        $this->request3->initialize(array(
+            'transactionId'     => '12345',
+            'amount'            => '25.50',
+            'currency'          => 'USD',
+            'token'             => '3827187391',
+            'paymentMethodType' => 'payment_bank',
+            'description'       => 'A vacation home rental',
+            'feePayer'          => 'payee',
+            'accountId'         => '783276130',
+            'type'              => 'goods',
+            'mode'              => 'general',
+            'fallbackUri'       => 'http://localhost.dev',
+            'shippingFee'       => '20',
+            'requireShipping'   => true,
+            'accessToken'       => 'STAGE_ca4cf9c5d2d4623d18dae0fc47b908f2d17b47654eecb1fc55bc8652945927cd',
+            'callbackUri'      => 'http://localhost.dev/wp-content/plugins/omnipaywp/hook.php'
+        ));
     }
 
     public function testGetData()
@@ -103,6 +125,21 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('goods', $data2['type']);
         $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/hook.php',
             $data2['callback_uri']);
+
+        //---------- test for on-site purchase request with payment bank token --------//
+        $data3 = $this->request3->getData();
+
+        $this->assertSame('783276130', $data3['account_id']);
+        $this->assertSame('12345', $data3['reference_id']);
+        $this->assertSame('25.50', $data3['amount']);
+        $this->assertSame('USD', $data3['currency']);
+        $this->assertSame('3827187391', $data3['payment_method']['payment_bank']['id']);
+        $this->assertSame('A vacation home rental', $data3['short_description']);
+        $this->assertSame('payee', $data3['fee']['fee_payer']);
+        $this->assertSame('783276130', $data3['account_id']);
+        $this->assertSame('goods', $data3['type']);
+        $this->assertSame('http://localhost.dev/wp-content/plugins/omnipaywp/hook.php',
+            $data3['callback_uri']);
     }
 
     public function testSendData()

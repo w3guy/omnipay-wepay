@@ -167,6 +167,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('cancelReason', $value);
     }
 
+    public function getPaymentMethodType()
+    {
+        return $this->getParameter('paymentMethodType');
+    }
+
+    public function setPaymentMethodType($value)
+    {
+        return $this->setParameter('paymentMethodType', $value);
+    }
+
     public function getApiHeader()
     {
         return array(
