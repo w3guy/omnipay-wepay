@@ -27,6 +27,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('feePayer', $value);
     }
 
+    public function getApplicationFee()
+    {
+        return $this->getParameter('applicationFee');
+    }
+
+    public function setApplicationFee($value)
+    {
+        return $this->setParameter('applicationFee', $value);
+    }
+
     public function getType()
     {
         return $this->getParameter('type');
@@ -87,6 +97,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('fallbackUri', $value);
     }
 
+    public function getCallbackUri()
+    {
+        return $this->getParameter('callbackUri');
+    }
+
+    public function setCallbackUri($value)
+    {
+        return $this->setParameter('callbackUri', $value);
+    }
+
     public function getShippingFee()
     {
         return $this->getParameter('shippingFee');
@@ -115,6 +135,46 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setFundingSources($value)
     {
         return $this->setParameter('fundingSources', $value);
+    }
+
+    public function getTransactionReference()
+    {
+        return $this->getParameter('transactionReference');
+    }
+
+    public function setTransactionReference($value)
+    {
+        return $this->setParameter('transactionReference', $value);
+    }
+
+    public function getRefundReason()
+    {
+        return $this->getParameter('refundReason');
+    }
+
+    public function setRefundReason($value)
+    {
+        return $this->setParameter('refundReason', $value);
+    }
+
+    public function getCancelReason()
+    {
+        return $this->getParameter('cancelReason');
+    }
+
+    public function setCancelReason($value)
+    {
+        return $this->setParameter('cancelReason', $value);
+    }
+
+    public function getPaymentMethodType()
+    {
+        return $this->getParameter('paymentMethodType');
+    }
+
+    public function setPaymentMethodType($value)
+    {
+        return $this->setParameter('paymentMethodType', $value);
     }
 
     public function getApiHeader()

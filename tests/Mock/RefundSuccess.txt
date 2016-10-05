@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+Accept-Ranges: bytes
+Connection: keep-alive
+Vary: Authorization
+
+{
+  "checkout_id": 783276130,
+  "state":"refunded"
+}

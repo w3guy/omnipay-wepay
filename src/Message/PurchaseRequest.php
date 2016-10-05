@@ -22,7 +22,10 @@ class PurchaseRequest extends AbstractRequest
         $data['currency'] = $this->getCurrency();
         $data['short_description'] = $this->getDescription();
         $data['long_description'] = $this->getDescription();
-        $data['fee'] = array('fee_payer' => $this->getFeePayer());
+        $data['fee'] = array('fee_payer' => $this->getFeePayer(), 'app_fee' => $this->getApplicationFee());
+        if ($this->getCallbackUri()) {
+            $data['callback_uri'] = $this->getCallbackUri();
+        }
 
         $token = $this->getToken();
         if (isset($token) && !empty($token)) {
@@ -31,10 +34,18 @@ class PurchaseRequest extends AbstractRequest
             // see footnote in https://www.wepay.com/developer/reference/checkout#create
             // its important that unique and reference ID are strings else it becomes invalid
             $data['unique_id'] = (string) $this->getTransactionId();
-            $data['payment_method']['type'] = 'credit_card';
-            $data['payment_method']['credit_card'] = array(
-                'id' => $token,
-            );
+
+            if ($this->getPaymentMethodType() == 'payment_bank') {
+                $data['payment_method']['type'] = 'payment_bank';
+                $data['payment_method']['payment_bank'] = array(
+                    'id' => $token,
+                );
+            } else {
+                $data['payment_method']['type'] = 'credit_card';
+                $data['payment_method']['credit_card'] = array(
+                    'id' => $token,
+                );
+            }
         } else {
             $data['hosted_checkout'] = array();
 
@@ -88,7 +99,7 @@ class PurchaseRequest extends AbstractRequest
             )->send();
 
             // if credit card token is included in this transaction parameter, instantiate CustomCheckoutReponse
-            if (isset($data['payment_method']['credit_card'])) {
+            if (isset($data['payment_method']['credit_card']) || isset($data['payment_method']['payment_bank'])) {
                 return new CustomCheckoutResponse($this, $response->json());
             } else {
                 return new PurchaseResponse($this, $response->json());
