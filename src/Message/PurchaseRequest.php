@@ -71,11 +71,14 @@ class PurchaseRequest extends AbstractRequest
                     'name' => $this->getCard()->getName(),
                     'email' => $this->getCard()->getEmail(),
                     'phone_number' => $this->getCard()->getPhone(),
-                    'address' => $this->getCard()->getAddress1(),
-                    'city' => $this->getCard()->getCity(),
-                    'state' => $this->getCard()->getState(),
-                    'region' => $this->getRegion(),
-                    'country' => $this->getCard()->getCountry(),
+                    'address' => array(
+                        'address1' => $this->getCard()->getAddress1(),
+                        'address2' => $this->getCard()->getAddress2(),
+                        'city' => $this->getCard()->getCity(),
+                        'region' => $this->getCard()->getState(),
+                        'country' => $this->getCard()->getCountry(),
+                        'postal_code' => $this->getCard()->getPostcode()
+                    )
                 );
 
                 foreach ($prefill_info as $key => $value) {
