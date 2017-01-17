@@ -9,6 +9,11 @@ use Guzzle\Http\Exception\BadResponseException;
  */
 class PurchaseRequest extends AbstractRequest
 {
+    public function isNotNull($value)
+    {
+        return !is_null($value);
+    }
+
     public function getData()
     {
         $this->validate('transactionId', 'amount', 'currency', 'type', 'description', 'accountId');
@@ -16,7 +21,7 @@ class PurchaseRequest extends AbstractRequest
         $data = array();
         $data['account_id'] = $this->getAccountId();
         // its important that unique and reference ID are strings else it becomes invalid
-        $data['reference_id'] = (string) $this->getTransactionId();
+        $data['reference_id'] = (string)$this->getTransactionId();
         $data['amount'] = $this->getAmount();
         $data['type'] = $this->getType();
         $data['currency'] = $this->getCurrency();
@@ -33,7 +38,7 @@ class PurchaseRequest extends AbstractRequest
             // this is highly encouraged to prevent duplicate transactions on a single order.
             // see footnote in https://www.wepay.com/developer/reference/checkout#create
             // its important that unique and reference ID are strings else it becomes invalid
-            $data['unique_id'] = (string) $this->getTransactionId();
+            $data['unique_id'] = (string)$this->getTransactionId();
 
             if ($this->getPaymentMethodType() == 'payment_bank') {
                 $data['payment_method']['type'] = 'payment_bank';
@@ -71,13 +76,17 @@ class PurchaseRequest extends AbstractRequest
                     'name' => $this->getCard()->getName(),
                     'email' => $this->getCard()->getEmail(),
                     'phone_number' => $this->getCard()->getPhone(),
-                    'address' => array(
-                        'address1' => $this->getCard()->getAddress1(),
-                        'address2' => $this->getCard()->getAddress2(),
-                        'city' => $this->getCard()->getCity(),
-                        'region' => $this->getCard()->getState(),
-                        'country' => $this->getCard()->getCountry(),
-                        'postal_code' => $this->getCard()->getPostcode()
+                    // filter out null values
+                    'address' => array_filter(
+                        array(
+                            'address1' => $this->getCard()->getAddress1(),
+                            'address2' => $this->getCard()->getAddress2(),
+                            'city' => $this->getCard()->getCity(),
+                            'region' => $this->getCard()->getState(),
+                            'country' => $this->getCard()->getCountry(),
+                            'postal_code' => $this->getCard()->getPostcode()
+                        ),
+                        array($this, 'isNotNull')
                     )
                 );
 
