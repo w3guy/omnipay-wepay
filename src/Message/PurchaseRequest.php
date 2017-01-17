@@ -27,7 +27,13 @@ class PurchaseRequest extends AbstractRequest
         $data['currency'] = $this->getCurrency();
         $data['short_description'] = $this->getDescription();
         $data['long_description'] = $this->getDescription();
-        $data['fee'] = array('fee_payer' => $this->getFeePayer(), 'app_fee' => $this->getApplicationFee());
+        $data['fee'] = array_filter(
+            array(
+                'fee_payer' => $this->getFeePayer(),
+                'app_fee' => $this->getApplicationFee()
+            ),
+            array($this, 'isNotNull')
+        );
         if ($this->getCallbackUri()) {
             $data['callback_uri'] = $this->getCallbackUri();
         }
@@ -98,7 +104,7 @@ class PurchaseRequest extends AbstractRequest
             }
         }
 
-        return $data;
+        return array_filter($data, array($this, 'isNotNull'));
     }
 
     public function sendData($data)
