@@ -15,6 +15,15 @@ class FetchTransactionResponse extends AbstractResponse
                && in_array($this->data['state'], array('authorized', 'reserved', 'captured'));
     }
 
+    /** Returns full response body
+     * 
+     * @return mixed
+     */
+    public function getData()
+    {
+        return parent::getData();
+    }
+
     public function getTransactionReference()
     {
         return isset($this->data['checkout_id']) ? $this->data['checkout_id'] : null;
